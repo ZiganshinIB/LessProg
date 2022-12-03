@@ -27,7 +27,9 @@ while (taskNomber != 0){
             int n_2 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите число 3 число: ");
             int n_3 = Convert.ToInt32(Console.ReadLine());
-
+            int max = n_1;
+            if (n_2>max) max = n_2;
+            if (n_3>max) max = n_3;
             break;
         case 6: break;
         case 8: break;
