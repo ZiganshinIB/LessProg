@@ -6,7 +6,7 @@ while (taskNomber != 0){
     taskNomber = Convert.ToInt32(Console.ReadLine());
 
     switch(taskNomber){
-        case 1: 
+        case 2: 
             Console.Write("Введите число a: ");
             int a = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите число b: ");
@@ -20,11 +20,11 @@ while (taskNomber != 0){
                 Console.WriteLine($"min = {a}");
             }else    Console.WriteLine($"{a} = {b}");
             break;
-        case 2: break;
-        case 3: break;
         case 4: break;
+        case 6: break;
+        case 8: break;
         default: 
             Console.WriteLine("Ответ: 42");
             break;
-}
+    }
 }
