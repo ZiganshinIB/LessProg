@@ -31,8 +31,28 @@ while (taskNomber != 0){
 
             Console.WriteLine($"Максимальное число: {max}");
             break;
+        // TODO: for branch Task6
         case 6: break;
+        // TODO: for branch Task8
         case 8: break;
+        case 15: 
+            Console.Write("Введите число: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int p = 100;
+            int c = 2;
+            if (number-p<0) Console.WriteLine("третьей цифры нет");
+            else{
+                while(number-p>0){
+                    p = p * 10;
+                    c = c +1;
+                }
+                int res = a/(p/1000);
+                Console.Write(res%10);
+            }
+
+
+            break;
+
         default: 
             Console.WriteLine("Ответ: 42");
             break;
