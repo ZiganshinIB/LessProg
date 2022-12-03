@@ -3,7 +3,6 @@ int taskNomber;
 Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
 taskNomber = Convert.ToInt32(Console.ReadLine());
 while (taskNomber != 0){
-    Console.Clear();
     switch(taskNomber){
         case 2: 
             Console.Write("Введите число a: ");
