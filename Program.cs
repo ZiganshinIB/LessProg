@@ -46,7 +46,7 @@ while (taskNomber != 0){
                     p = p * 10;
                     c = c +1;
                 }
-                int res = a/(p/1000);
+                int res = number/(p/1000);
                 Console.Write(res%10);
             }
 
