@@ -1,0 +1,15 @@
+G:\Project\GekBrains\LessProg\bin\Debug\net6.0\LessProg.exe
+G:\Project\GekBrains\LessProg\bin\Debug\net6.0\LessProg.deps.json
+G:\Project\GekBrains\LessProg\bin\Debug\net6.0\LessProg.runtimeconfig.json
+G:\Project\GekBrains\LessProg\bin\Debug\net6.0\LessProg.dll
+G:\Project\GekBrains\LessProg\bin\Debug\net6.0\LessProg.pdb
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.csproj.AssemblyReference.cache
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.GeneratedMSBuildEditorConfig.editorconfig
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.AssemblyInfoInputs.cache
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.AssemblyInfo.cs
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.csproj.CoreCompileInputs.cache
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.dll
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\refint\LessProg.dll
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.pdb
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\LessProg.genruntimeconfig.cache
+G:\Project\GekBrains\LessProg\obj\Debug\net6.0\ref\LessProg.dll
