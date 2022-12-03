@@ -28,13 +28,16 @@ while (taskNomber != 0){
             int max = n_1;
             if (n_2>max) max = n_2;
             if (n_3>max) max = n_3;
-
             Console.WriteLine($"Максимальное число: {max}");
             break;
         // TODO: for branch Task6
-        case 6: break;
+        case 6: 
+            
+            break;
         // TODO: for branch Task8
-        case 8: break;
+        case 8: 
+            
+            break;
         case 15: 
             Console.Write("Введите число: ");
             int number = Convert.ToInt32(Console.ReadLine());
