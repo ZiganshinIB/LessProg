@@ -1,10 +1,9 @@
 ﻿Console.Clear();
-int taskNomber = 42;
+int taskNomber;
 Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
-
+taskNomber = Convert.ToInt32(Console.ReadLine());
 while (taskNomber != 0){
-    taskNomber = Convert.ToInt32(Console.ReadLine());
-
+    Console.Clear();
     switch(taskNomber){
         case 2: 
             Console.Write("Введите число a: ");
@@ -38,6 +37,8 @@ while (taskNomber != 0){
         default: 
             Console.WriteLine("Ответ: 42");
             break;
-    
+        
     }
+    Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
+    taskNomber = Convert.ToInt32(Console.ReadLine());
 }
