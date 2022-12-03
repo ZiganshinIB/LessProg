@@ -32,7 +32,9 @@ while (taskNomber != 0){
             break;
         // TODO: for branch Task6
         case 6: 
-            
+            Console.Write("Введите число: ");
+            int number_even = Convert.ToInt32(Console.ReadLine())
+            Console.Write(number_even);
             break;
         // TODO: for branch Task8
         case 8: 
