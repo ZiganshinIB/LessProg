@@ -31,7 +31,7 @@ while (taskNomber != 0){
             if (n_2>max) max = n_2;
             if (n_3>max) max = n_3;
 
-            Console.WriteLine(max);
+            Console.WriteLine($"Максимальное число: {max}");
             break;
         case 6: break;
         case 8: break;
