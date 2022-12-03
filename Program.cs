@@ -49,10 +49,7 @@ while (taskNomber != 0){
                 int res = number/(p/1000);
                 Console.Write(res%10);
             }
-
-
             break;
-
         default: 
             Console.WriteLine("Ответ: 42");
             break;
