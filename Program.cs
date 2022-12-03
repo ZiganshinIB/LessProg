@@ -30,14 +30,12 @@ while (taskNomber != 0){
             if (n_3>max) max = n_3;
             Console.WriteLine($"Максимальное число: {max}");
             break;
-        // TODO: for branch Task6
         case 6: 
             Console.Write("Введите число: ");
             int number_even = Convert.ToInt32(Console.ReadLine());
             if (number_even%2 == 0) Console.WriteLine("Yes");
             else Console.WriteLine("No");
             break;
-        // TODO: for branch Task8
         case 8: 
             Console.WriteLine("Введите число : ");
             int number_events = Convert.ToInt32(Console.ReadLine());
