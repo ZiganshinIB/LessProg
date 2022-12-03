@@ -34,7 +34,6 @@ while (taskNomber != 0){
         case 6: 
             Console.Write("Введите число: ");
             int number_even = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(number_even);
             if (number_even%2 == 0) Console.WriteLine("Yes");
             else Console.WriteLine("No");
             break;
