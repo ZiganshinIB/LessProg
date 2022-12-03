@@ -39,7 +39,15 @@ while (taskNomber != 0){
             break;
         // TODO: for branch Task8
         case 8: 
-            
+            Console.WriteLine("Введите число : ");
+            int number_events = Convert.ToInt32(Console.ReadLine());
+            Console.Write("-> ");
+            int c_8 = 2;
+            while(number_events>=c_8){
+                Console.Write($"{c_8} ");
+                c_8=c_8+2;
+            }
+            Console.WriteLine(); 
             break;
         case 15: 
             Console.Write("Введите число: ");
