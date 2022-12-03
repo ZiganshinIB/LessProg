@@ -30,11 +30,14 @@ while (taskNomber != 0){
             int max = n_1;
             if (n_2>max) max = n_2;
             if (n_3>max) max = n_3;
+
+            Console.WriteLine(max);
             break;
         case 6: break;
         case 8: break;
         default: 
             Console.WriteLine("Ответ: 42");
             break;
+    
     }
 }
