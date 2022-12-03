@@ -20,7 +20,15 @@ while (taskNomber != 0){
                 Console.WriteLine($"min = {a}");
             }else    Console.WriteLine($"{a} = {b}");
             break;
-        case 4: break;
+        case 4:
+            Console.Write("Введите число 1 число : ");
+            int n_1 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите число 2 число: ");
+            int n_2 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите число 3 число: ");
+            int n_3 = Convert.ToInt32(Console.ReadLine());
+
+            break;
         case 6: break;
         case 8: break;
         default: 
