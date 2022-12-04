@@ -151,6 +151,16 @@ while (taskNomber != 0){
                 Math.Pow(y_1-y_2,2)
                 ),2));
             break;
+        case 22:
+            Console.WriteLine("Введите число : ");
+            int number_qrt = Convert.ToInt32(Console.ReadLine());
+            Console.Write("-> ");
+            for(int i = 1; i>= number_qrt; i++){
+                Console.Write($"{Math.Pow(c,2)} ");
+                c=c+1;
+            }
+            Console.WriteLine(); 
+            break;
         default: 
             Console.WriteLine("Ответ: 42");
             break; 
