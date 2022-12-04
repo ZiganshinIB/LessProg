@@ -148,20 +148,25 @@ while (taskNomber != 0){
                 Console.WriteLine("no");
             break;
         case 21:
-            Console.Write("Введите координат x 1-ой точки: ");
-            double x_1 = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите координат y 1-ой точки: ");
-            double y_1 = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите координат x 2-ой точки: ");
-            double x_2 = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите координат y 2-ой точки: ");
-            double y_2 = Convert.ToDouble(Console.ReadLine());
-
+            Console.Write("Введите координат 1-ой точки через пробел: ");
+            string[] point_a_String = Console.ReadLine().Split(" ");
+            Console.Write("Введите координат 2-ой точки через пробел: ");
+            string[] point_b_String = Console.ReadLine().Split(" ");
+            while(point_a_String.Length != point_b_String.Length){
+                Console.WriteLine("Кордиаты должны имет одинаковые кол-во точек!!!");
+                Console.Write("Введите координат 1-ой точки через пробел: ");
+                point_a_String = Console.ReadLine().Split(" ");
+                Console.Write("Введите координат 2-ой точки через пробел: ");
+                point_b_String = Console.ReadLine().Split(" ");
+            }
+            double sum_sqr_vector = 0;
+            for(int i=0; point_a_String.Length>i;i++ ){
+                double point_a = Convert.ToDouble(point_a_String[i]);
+                double point_b = Convert.ToDouble(point_b_String[i]);
+                sum_sqr_vector += Math.Pow(point_a-point_b,2); 
+            }
             Console.WriteLine(Math.Round(
-            Math.Sqrt(
-            Math.Pow(x_1-x_2,2)+
-                Math.Pow(y_1-y_2,2)
-                ),2));
+                Math.Sqrt(sum_sqr_vector),2));
             break;
         case 22:
             Console.WriteLine("Введите число : ");
