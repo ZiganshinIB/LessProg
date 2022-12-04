@@ -47,6 +47,12 @@ while (taskNomber != 0){
             }
             Console.WriteLine(); 
             break;
+        case 10:
+            Console.Write("Введите трёхзначное число число: ");
+            int threeDigit_number = Convert.ToInt32(Console.ReadLine());
+            int result = (threeDigit_number/10)%10;
+            Console.WriteLine(result);
+            break;
         case 13: 
             Console.Write("Введите число: ");
             int number = Convert.ToInt32(Console.ReadLine());
