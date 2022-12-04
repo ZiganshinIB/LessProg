@@ -4,6 +4,37 @@ Console.WriteLine("Выбире задание \n В случае когда в�
 taskNomber = Convert.ToInt32(Console.ReadLine());
 while (taskNomber != 0){
     switch(taskNomber){
+        case -2:
+            Console.Write("Введите кол-во Кустов : ");
+            int count_bushes = Convert.ToInt32(Console.ReadLine());
+            int[] berries = new int[count_bushes];
+            int  max_berries = -1;
+            int[] indexs_maxs_berries = {0, 0, 0};
+            for(int i=0; count_bushes>i;i++ ){
+                Console.Write($"Введите кол-во ягод на {i+1} грядке: ");
+                berries[i] = Convert.ToInt32(Console.ReadLine());
+                if (max_berries<berries[i]){
+                    indexs_maxs_berries[0] = i;
+                    max_berries = berries[i];
+                }
+            }
+            max_berries = -1;
+            for(int i=0; count_bushes>i;i++ )
+            if(indexs_maxs_berries[0]!=i && max_berries<berries[i]){
+                indexs_maxs_berries[1] = i;
+                max_berries = berries[i];
+            }
+            max_berries = -1;
+            for(int i=0; count_bushes>i;i++ )
+                if(indexs_maxs_berries[0]!=i && indexs_maxs_berries[1]!=i && max_berries<berries[i]){
+                    indexs_maxs_berries[2] = i;
+                    max_berries = berries[i];
+                }
+            int max_sum_berries = 0;
+            for(int i=0; i<3;i++ )
+                max_sum_berries += berries[indexs_maxs_berries[i]];
+                Console.WriteLine(max_sum_berries);
+            break;
         case -1:
             Console.Clear();
             Console.Write("Введите кол-во элементов массива: ");
