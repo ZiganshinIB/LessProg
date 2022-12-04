@@ -47,7 +47,7 @@ while (taskNomber != 0){
             }
             Console.WriteLine(); 
             break;
-        case 15: 
+        case 13: 
             Console.Write("Введите число: ");
             int number = Convert.ToInt32(Console.ReadLine());
             int p = 100;
