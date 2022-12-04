@@ -72,7 +72,7 @@ while (taskNomber != 0){
             Console.Write("Введите день недели: ");
             int day_week = Convert.ToInt32(Console.ReadLine());
             if (day_week > 7 || day_week < 1){
-                Console.WriteLine("Не являтся днем недели");
+                Console.WriteLine("Не является днем недели");
             }else if(day_week == 7 || day_week == 6){
                 Console.WriteLine("Yes");
             }else{
