@@ -155,10 +155,8 @@ while (taskNomber != 0){
             Console.WriteLine("Введите число : ");
             int number_qrt = Convert.ToInt32(Console.ReadLine());
             Console.Write("-> ");
-            for(int i = 1; i>= number_qrt; i++){
-                Console.Write($"{Math.Pow(c,2)} ");
-                c=c+1;
-            }
+            for(int i = 1; i>= number_qrt; i++)
+                Console.Write($"{Math.Pow(i,2)} ");
             Console.WriteLine(); 
             break;
         default: 
