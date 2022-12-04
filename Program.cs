@@ -79,10 +79,42 @@ while (taskNomber != 0){
                 Console.WriteLine("No");
             }
             break;
+        case 18:
+            Console.Clear();
+            Console.Write("Введите четверт: ");
+            int x = Convert.ToInt32(Console.ReadLine());
+
+            while(x>4 || x <1){
+                Console.Write("Введите четверт: ");
+                x = Convert.ToInt32(Console.ReadLine());
+            }
+            string smale = "меньше";
+            string big = "больше";
+            switch (x){
+                case 1:
+                    Console.WriteLine($"X {big} 0");
+                    Console.WriteLine($"Y {big} 0");
+                    break;
+                case 2:
+                    Console.WriteLine($"X {big} 0");
+                    Console.WriteLine($"Y {smale} 0");
+                    break;
+                case 3:
+                    Console.WriteLine($"X {smale} 0");
+                    Console.WriteLine($"Y {smale} 0");
+                    break;
+                case 4:
+                    Console.WriteLine($"X {smale} 0");
+                    Console.WriteLine($"Y {big} 0");
+                    break;
+                default:
+                    Console.WriteLine("Alarm");
+                    break;        
+            }
+            break; 
         default: 
             Console.WriteLine("Ответ: 42");
-            break;
-        
+            break; 
     }
     Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
     taskNomber = Convert.ToInt32(Console.ReadLine());
