@@ -135,6 +135,18 @@ while (taskNomber != 0){
                     break;        
             }
             break;
+        case 19:
+            Console.Write("Введите пятизначное число : ");
+            string? number_5 = Console.ReadLine();
+            while(number_5.Length !=5){
+                Console.Write("Введите пятизначное число : ");
+                number_5 = Console.ReadLine();
+            }
+            if(number_5[0]==number_5[4] && number_5[1]==number_5[3])
+                Console.WriteLine("Yes");
+            else
+                Console.WriteLine("no");
+            break;
         case 21:
             Console.Write("Введите координат x 1-ой точки: ");
             double x_1 = Convert.ToDouble(Console.ReadLine());
