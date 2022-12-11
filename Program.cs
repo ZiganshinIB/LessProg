@@ -3,6 +3,10 @@ int taskNomber;
 Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
 taskNomber = Convert.ToInt32(Console.ReadLine());
 
+//Частые переменные
+int count, number;
+int[] IntArray;
+
 //task 25
 int Pow(int number, int a){
     int p = 1;
@@ -38,7 +42,15 @@ int[] InitRandomArrayInt(int count, int min=-10, int max=10)
     Console.WriteLine($"[{string.Join(", ", array)}]");
     return array;
 }
-
+double[] InitRandomArrayDouble(int count, double min=-10, double max=10)
+{   
+    double[] array = new double[count];
+    for (int i = 0; i < count; i++){
+        array[i] = new Random().NextDouble()*(max-min)+min; // (min, max)
+    }
+    Console.WriteLine($"[{string.Join(", ", array)}]");
+    return array;
+}
 
 int CalculateOffset(int max, int step, int index){
     return (max+step%max + index)%max;
@@ -52,6 +64,71 @@ int[] SuperOffset(int[] array, int step){
     return new_arr;
 }
 
+
+//task 34 
+int CountElementsIsEven(int[] array){
+    int count =0;
+    for(int i =0;i<array.Length; i++)
+        if ((array[i] %2) ==0)
+            count++;
+    return count;
+}
+//task 34 
+void ProcedurEffectCountElementsIsEven(int countElement, int min=100, int max=999){
+    int[] array = new int[countElement];
+    int count = 0;
+    for (int i = 0; i < count; i++){
+        int valueItem = new Random().Next(min, max);
+        array[i] = valueItem;
+        if (valueItem%2==0) count++;    
+    }
+    Console.WriteLine($"[{string.Join(", ", array)}]");
+    Console.WriteLine(count);
+}
+
+//task 36
+int SumElementsIsNotEven(int[] array){
+    int sum =0;
+    for(int i =1;i<array.Length; i+=2)
+        sum+=array[i];
+    return sum;
+}
+//task 36
+void ProcedurEffectSumElementsIsNotEven(int countElement, int min=-10, int max=10){
+    int[] array = new int[countElement];
+    int sum = 0;
+    for (int i = 0; i < count; i++){
+        int valueItem = new Random().Next(min, max);
+        array[i] = valueItem;
+        if (i%2==1) sum+=valueItem;    
+    }
+    Console.WriteLine($"[{string.Join(", ", array)}]");
+    Console.WriteLine(sum);
+}
+
+//task 38
+double RangeMinMax(double[] array){
+    double min = array[0];
+    double max = array[0];
+    for(int i=1; i<array.Length; i++)
+        if(array[i]<min)       min = array[i];
+        else if (array[i]>max) max = array[i];
+    return max-min;
+}
+void ProcedurEffectRangeMinMax(int count, double min=-10, double max=10){
+    double minItem, maxItem,valueItem;
+    valueItem = new Random().NextDouble()*(max-min)+min;
+    maxItem = valueItem;
+    minItem = valueItem;
+    Console.Write($"[{valueItem}");
+    for (int i = 1; i < count; i++){
+        valueItem = new Random().NextDouble()*(max-min)+min; // (min, max)
+        if(valueItem<minItem)       minItem = valueItem;
+        else if (valueItem>maxItem) maxItem = valueItem;
+        Console.Write($", {valueItem}");
+    }
+    Console.Write($"]\n{maxItem-minItem}\n");
+}
 
 while (taskNomber != 0){
     switch(taskNomber){
@@ -170,7 +247,7 @@ while (taskNomber != 0){
             break;
         case 13: 
             Console.Write("Введите число: ");
-            int number = Convert.ToInt32(Console.ReadLine());
+            number = Convert.ToInt32(Console.ReadLine());
             int p = 100;
             int c = 2;
             if (number-p<0) Console.WriteLine("третьей цифры нет");
@@ -285,6 +362,23 @@ while (taskNomber != 0){
             int count_item = Convert.ToInt32(Console.ReadLine());
             int[] arr = InitUserArrayInt(count_item);
             Console.WriteLine($"[{string.Join(", ", arr)}]");
+            break;
+        case 34:
+            Console.WriteLine("Введите кол-во элементов: ");
+            count = Convert.ToInt32(Console.ReadLine());
+            IntArray  = InitRandomArrayInt(count,100,999);
+            Console.WriteLine(CountElementsIsEven(IntArray));
+            break;
+        case 36:
+            Console.WriteLine("Введите кол-во элементов: ");
+            count = Convert.ToInt32(Console.ReadLine());
+            IntArray  = InitRandomArrayInt(count,-10,10);
+            Console.WriteLine(SumElementsIsNotEven(IntArray));
+            break;
+        case 38:
+            Console.WriteLine("Введите кол-во элементов: ");
+            count = Convert.ToInt32(Console.ReadLine());
+            ProcedurEffectRangeMinMax(count);
             break;
         default: 
             Console.WriteLine("Ответ: 42");
