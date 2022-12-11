@@ -2,8 +2,69 @@
 int taskNomber;
 Console.WriteLine("Выбире задание \n В случае когда вы хотите завершить введите 0");
 taskNomber = Convert.ToInt32(Console.ReadLine());
+
+//task 25
+int Pow(int number, int a){
+    int p = 1;
+    for(int i= 0; i<a; i++)
+        p = p*number;
+    return p;
+}
+
+//task 27
+int SumDigitsInNumber(int number){
+    string SNumber = Convert.ToString(number);
+    int sum = 0;
+    for(int i=0;i<SNumber.Length;i++){
+        sum+= Convert.ToInt32(SNumber[i])-48; //-48 ASCI потому что char 
+    }
+    return sum;
+}
+
+//task 29
+int[] InitUserArrayInt(int count){
+    int[] array = new int[count];
+    for(int i = 0; i<count; i++){
+        Console.Write($"Введите {i+1} элемент: ");
+        array[i] = int.Parse(Console.ReadLine());
+    }
+    return array;
+}
+int[] InitRandomArrayInt(int count, int min=-10, int max=10)
+{   
+    int[] array = new int[count];
+    for (int i = 0; i < count; i++)
+        array[i] = new Random().Next(min, max); // [min, max]
+    Console.WriteLine($"[{string.Join(", ", array)}]");
+    return array;
+}
+
+
+int CalculateOffset(int max, int step, int index){
+    return (max+step%max + index)%max;
+}
+//Суперсдвиг
+int[] SuperOffset(int[] array, int step){
+    int n = array.Length;
+    int[] new_arr = new int[n];
+    for(int i = 0; i < n;i++)
+        new_arr[CalculateOffset(n,step,i)] = array[i];
+    return new_arr;
+}
+
+
 while (taskNomber != 0){
     switch(taskNomber){
+        case -3:
+            Console.WriteLine("Супер смещение : ");
+            Console.Write("Введите кол-во элементов массива: ");
+            int count_offset = Convert.ToInt32(Console.ReadLine());
+            int[] array_offset =  InitRandomArrayInt(count_offset);
+            Console.Write("Введите смещение: ");
+            int step_offset = Convert.ToInt32(Console.ReadLine());
+            array_offset = SuperOffset(array_offset, step_offset);
+            Console.WriteLine($"[{string.Join(", ", array_offset)}]");
+            break;
         case -2:
             Console.Write("Введите кол-во Кустов : ");
             int count_bushes = Convert.ToInt32(Console.ReadLine());
@@ -206,6 +267,24 @@ while (taskNomber != 0){
             for(int i = 1; i>= number_qrt; i++)
                 Console.Write($"i*i ");
             Console.WriteLine(); 
+            break;
+        case 25:
+            Console.WriteLine("Введите число: ");
+            int number_pow = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите степень: ");
+            int a_pow = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(Pow(number_pow, a_pow));
+            break;
+        case 27:
+            Console.WriteLine("Введите число: ");
+            int number_sum = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(SumDigitsInNumber(number_sum));
+            break;
+        case 29:
+            Console.WriteLine("Введите кол-во элементов: ");
+            int count_item = Convert.ToInt32(Console.ReadLine());
+            int[] arr = InitUserArrayInt(count_item);
+            Console.WriteLine($"[{string.Join(", ", arr)}]");
             break;
         default: 
             Console.WriteLine("Ответ: 42");
