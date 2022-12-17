@@ -195,6 +195,32 @@ void ProcedurEffectRangeMinMax(int count, double min=-10, double max=10){
     Console.Write($"]\n{maxItem-minItem}\n");
 }
 
+// task 41
+int countPositiv(int[] array){
+    count = 0;
+    foreach (int item in array) if(item>0) count++;
+    return count;
+}
+void ProcedurEffectCountPositivElement(){
+    Console.Write("Введите число: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    count = 0;
+    for(int i =0; i<m;i++){
+        Console.Write($"Введите {i+1} элемент: ");
+        int element = Convert.ToInt32(Console.ReadLine());
+        if(element>0) count++;
+    }
+    Console.WriteLine(count);
+}
+
+// task 43
+double[] getIntersection(double k1, double b1, double k2, double b2){
+    double x = (b2 - b1)/(k1-k2);
+    double y = k1*x+b1;
+    double[] result = {x,y};
+    return result;
+}
+
 while (taskNomber != 0){
     switch(taskNomber){
         case -5:
@@ -454,6 +480,20 @@ while (taskNomber != 0){
             count = Convert.ToInt32(Console.ReadLine());
             ProcedurEffectRangeMinMax(count);
             break;
+        case 41:
+            ProcedurEffectCountPositivElement();
+            break;
+        case 43:
+            Console.Write("Введите k1= ");
+            double k1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите b1= ");
+            double b1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите k2= ");
+            double k2 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите b2= ");
+            double b2 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine($"({string.Join("; ",getIntersection(k1,b1,k2,b2))})");
+            break; 
         default: 
             Console.WriteLine("Ответ: 42");
             break; 
