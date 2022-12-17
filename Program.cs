@@ -27,6 +27,11 @@ int SumDigitsInNumber(int number){
 
 //task 29
 int[] InitUserArrayInt(int count){
+    Console.Write("Вы хотите ввести число через пробел?\n Если да нажмите Y:");
+    string? simbol = Console.ReadLine();
+    if (simbol=="y" || simbol=="Y"){
+        return Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+    }
     int[] array = new int[count];
     for(int i = 0; i<count; i++){
         Console.Write($"Введите {i+1} элемент: ");
@@ -52,6 +57,8 @@ double[] InitRandomArrayDouble(int count, double min=-10, double max=10)
     return array;
 }
 
+
+
 int CalculateOffset(int max, int step, int index){
     return (max+step%max + index)%max;
 }
@@ -64,6 +71,64 @@ int[] SuperOffset(int[] array, int step){
     return new_arr;
 }
 
+// Гипотеза Гольдбаха
+int[] getSimpleNumber(int end=999){
+    int[] simpleArray = new int[end];
+    simpleArray[0]=2;
+    int cursor = 1;
+    for(int i = 3; i<=end;i++){
+        foreach(int SimpleNumber in simpleArray){
+            if (SimpleNumber==0){
+                simpleArray[cursor] = i;
+                cursor++;
+                break;
+            }else if(i%SimpleNumber==0) break;
+        }
+    }
+    // Костыл который работает только с C# 8
+    return simpleArray[0..(cursor)];
+}
+void getGoldbahResult(int number){
+    int[] simpleArray = getSimpleNumber(number);
+    foreach(int simpleNumber1 in simpleArray){
+        foreach(int simpleNumber2 in simpleArray){
+            if ((number - simpleNumber1) == simpleNumber2){
+                Console.WriteLine($"{simpleNumber1} {simpleNumber2}");
+                return;
+            }
+        }
+    }
+    Console.WriteLine("если вы тут, то это Чушь Гольдбаха");
+}
+
+
+// Статистика
+void TaskStatistika(){
+    Console.Write("Введите кол-во дней: ");
+    int count= Convert.ToInt32(Console.ReadLine());
+    int[] dayArray = InitUserArrayInt(count);
+    int[] gootDayArray = new int[dayArray.Length];
+    int[] badDayArray = new int[dayArray.Length];
+    int score = 0;
+    for (int i =0; i<dayArray.Length;i++){
+        int day = dayArray[i];
+        if(day%2==0){
+            gootDayArray[i] = day;
+            score++;
+        }else{
+            badDayArray[i] = day;
+            score--;
+        }
+    }
+    for(int i =0; i<gootDayArray.Length;i++)
+        if(gootDayArray[i]>0) Console.Write($"{gootDayArray[i]} ");   
+    Console.WriteLine();
+    for(int i =0; i<badDayArray.Length;i++)
+        if(badDayArray[i]>0) Console.Write($"{badDayArray[i]} ");   
+    Console.WriteLine();
+    if(score>0) Console.WriteLine("Yes");
+    else Console.WriteLine("No");
+}
 
 //task 34 
 int CountElementsIsEven(int[] array){
@@ -132,6 +197,15 @@ void ProcedurEffectRangeMinMax(int count, double min=-10, double max=10){
 
 while (taskNomber != 0){
     switch(taskNomber){
+        case -5:
+            TaskStatistika();
+            break;
+        case -4:
+            Console.WriteLine("Гипотеза Гольдбаха : ");
+            Console.Write("Введите число: ");
+            number = Convert.ToInt32(Console.ReadLine());
+            getGoldbahResult(number);
+            break;
         case -3:
             Console.WriteLine("Супер смещение : ");
             Console.Write("Введите кол-во элементов массива: ");
