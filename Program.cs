@@ -39,6 +39,32 @@ int[] InitUserArrayInt(int count){
     }
     return array;
 }
+double[] InitUserArrayDouble(int count){
+    Console.Write("Вы хотите ввести число через пробел?\n Если да нажмите Y:");
+    string? simbol = Console.ReadLine();
+    if (simbol=="y" || simbol=="Y"){
+        return Console.ReadLine().Split(" ").Select(x => double.Parse(x)).ToArray();
+    }
+    double[] array = new double[count];
+    for(int i = 0; i<count; i++){
+        Console.Write($"Введите {i+1} элемент: ");
+        array[i] = double.Parse(Console.ReadLine());
+    }
+    return array;
+}
+double[] InitUserArrayDoubleWithLabel(int count, string[] texts){
+    Console.Write("Вы хотите ввести число через пробел?\n Если да нажмите Y:");
+    string? simbol = Console.ReadLine();
+    if (simbol=="y" || simbol=="Y"){
+        return Console.ReadLine().Split(" ").Select(x => double.Parse(x)).ToArray();
+    }
+    double[] array = new double[count];
+    for(int i = 0; i<count; i++){
+        Console.Write($"Введите {texts[i]}: ");
+        array[i] = double.Parse(Console.ReadLine());
+    }
+    return array;
+}
 int[] InitRandomArrayInt(int count, int min=-10, int max=10)
 {   
     int[] array = new int[count];
@@ -61,6 +87,59 @@ double[] InitRandomArrayDouble(int count, double min=-10, double max=10)
 
 int CalculateOffset(int max, int step, int index){
     return (max+step%max + index)%max;
+}
+string OffsetStr(string str, int step){
+    int n = str.Length;
+    char[] newStr = str.ToCharArray();
+    for(int i = 0; i < n;i++)
+       newStr[CalculateOffset(n,step,i)] = str[i];
+    return string.Join("",newStr);
+}
+string replaceSimbol(string str, int targetFrom, int targetTo){
+    char[] newStr = str.ToCharArray();
+    char temp = newStr[targetFrom];
+    newStr[targetFrom] = newStr[targetTo];
+    newStr[targetTo] = temp;
+    return string.Join("",newStr);
+}
+int Factor(int n){
+    int p=1;
+    for (int i=1; i<=n;i++) p*=i;
+    return p;
+}
+string DelElement(string str, int targert){
+    char[] newCharArr = new char[str.Length-1];
+    int j =0;
+    for(int i =0;i<newCharArr.Length;i++,j++){
+        if(i == targert) j++;
+        newCharArr[i] = str[j];
+    }
+    return new string(newCharArr);
+}
+// Перестановка 
+void makePermutations(string str,string str2=""){
+    if(str.Length==0)
+        Console.WriteLine("Bag");
+    if(str2==""){
+        for(int i = 0; i<str.Length;i++){
+            string strWithOutI = DelElement(str,i);
+            makePermutations(strWithOutI,str[i].ToString());
+        }
+    }else if(str.Length>1){
+        for(int i = 0; i<str.Length;i++){
+            string strWithOutI = DelElement(str,i);
+            makePermutations(strWithOutI,$"{str[i].ToString()}{str2}");
+        }
+    }else{
+        Console.WriteLine($"{str}{str2}");
+        return;
+    }
+}
+//S Треугольника
+double AreaTriangle(double[] points){
+    double result = 0.5*((points[2]-points[0])*(points[5]-points[1])-(points[4]-points[0])*(points[3]-points[1]));
+    if (result<0) result*=-1;
+    return result;
 }
 //Суперсдвиг
 int[] SuperOffset(int[] array, int step){
@@ -223,6 +302,16 @@ double[] getIntersection(double k1, double b1, double k2, double b2){
 
 while (taskNomber != 0){
     switch(taskNomber){
+        case -7:
+            string[] laebels = {"x1","y1","x2","y2","x3","y3"};
+            double[] points = InitUserArrayDoubleWithLabel(6,laebels);
+            Console.WriteLine(AreaTriangle(points));
+            break;
+        case -6:
+            Console.Write("Введите символы (1<n<9) ");
+            string str = Console.ReadLine();
+            makePermutations(str,"");
+            break;
         case -5:
             TaskStatistika();
             break;
