@@ -4,7 +4,7 @@ Console.WriteLine("Выбире задание \n В случае когда в�
 taskNomber = Convert.ToInt32(Console.ReadLine());
 
 //Частые переменные
-int count, number;
+int count, number, n, m;
 int[] IntArray;
 
 //task 25
@@ -300,8 +300,214 @@ double[] getIntersection(double k1, double b1, double k2, double b2){
     return result;
 }
 
+// Task 47
+double[,] InitMatrixRandomeDouble(int rows, int cols, double min=-10, double max=10)
+{
+    double[,] doubleMatrix = new double[rows,cols];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            doubleMatrix[i,j] = new Random().NextDouble()*(max-min)+min;        
+    return doubleMatrix;
+}
+double[,] InitMatrixUserDouble(int rows, int cols)
+{
+    double[,] doubleMatrix = new double[rows,cols];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++){
+            Console.Write($"Введите  элемент ({i}{j}): ");
+            doubleMatrix[i,j] = Convert.ToDouble(Console.ReadLine());        
+        }
+    return doubleMatrix;
+}
+void WriteMatrixDouble(double[,] matrix){
+    for (int i = 0; i < matrix.GetLength(0); i++){
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            Console.Write($"{matrix[i,j]} \t");
+        Console.WriteLine();
+    }
+}
+
+// Task 47
+int[,] InitMatrixRandomeInt(int rows, int cols, int min=-10, int max=10)
+{
+    int[,] intMatrix = new int[rows,cols];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            intMatrix[i,j] = new Random().Next(min, max);        
+    return intMatrix;
+}
+int[,] InitMatrixUserInt(int rows, int cols)
+{
+    int[,] intMatrix = new int[rows,cols];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++){
+            Console.Write($"Введите  элемент ({i}{j}): ");
+            intMatrix[i,j] = Convert.ToInt32(Console.ReadLine());        
+        }
+    return intMatrix;
+}
+void WriteMatrixInt(int[,] matrix){
+    for (int i = 0; i < matrix.GetLength(0); i++){
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            Console.Write($"{matrix[i,j]} \t");
+        Console.WriteLine();
+    }
+}
+// Task 50
+void GetElementIntMatrix(int[,] matrix, int row, int col){
+    if(matrix.GetLength(0)>row && matrix.GetLength(0)>col)
+        Console.WriteLine(matrix[row, col]);
+    else
+        Console.WriteLine($"{row} {col} -> такой позиции в массиве нет");
+}
+void GetElementDoubleMatrix(double[,] matrix, int row, int col){
+    if(matrix.GetLength(0)>row && matrix.GetLength(0)>col)
+        Console.WriteLine(matrix[row, col]);
+    else
+        Console.WriteLine($"{row} {col} -> такой позиции в массиве нет");
+}
+// Task 52
+void SumColsFromMatrix(int[,] matrix){
+    for (int j = 0; j < matrix.GetLength(1); j++){
+        int sum = 0;
+        for (int i = 0; i < matrix.GetLength(0); i++)
+            sum+=matrix[i,j];
+        Console.Write($"{sum} \t");
+    }
+}
+// "Транспонирование"
+int[,] IntMTransport(int[,] matrix){
+    int[,] intMatrix=new int[matrix.GetLength(0),matrix.GetLength(1)];
+    for (int i = matrix.GetLength(0)-1, j=0; i >=0; i--,j++){
+        for(int k=0;k<matrix.GetLength(1);k++){
+            intMatrix[j,k] = matrix[i,k];
+            Console.Write($"{matrix[i,k]} \t");
+        }
+        Console.WriteLine();    
+    }
+    return intMatrix;
+}
+// Машина  Негатив
+void Negative(){
+    Console.WriteLine("Введите размер матрицы: ");
+    int[] size = Console.ReadLine().Split(" ").Select(x=>int.Parse(x)).ToArray();
+    Console.WriteLine($"{size[0]} {size[1]}");
+    Console.Write("Запольнить случайно? (Y-да): ");
+    string simbol = Console.ReadLine();
+    if(simbol=="y"||simbol=="Y"){
+        char[,] charArr= new char[size[0], size[1]];
+        char[,] negativeCharArr=new char[size[0], size[1]];
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                double flag = new Random().NextDouble();
+                if (flag > 0.5) charArr[i,j] = 'B';
+                else charArr[i,j] = 'W';
+                Console.Write(charArr[i,j]);
+                flag = new Random().NextDouble();
+                if (flag > 0.5) negativeCharArr[i,j] = 'B';
+                else negativeCharArr[i,j] = 'W';
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        // Negative
+        int countNegative = 0; 
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                Console.Write(negativeCharArr[i,j]);
+                if(charArr[i,j]==negativeCharArr[i,j]) countNegative++;
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        Console.WriteLine(countNegative);
+    }else{
+        char[,] charArr= new char[size[0], size[1]];
+        char[,] negativeCharArr=new char[size[0], size[1]];
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                Console.Write($"Введите элемент ({i},{j}) матрицы: ");
+                charArr[i,j]=Convert.ToChar(Console.ReadLine());
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                Console.Write(charArr[i,j]);
+            }
+            Console.WriteLine();
+        }
+        // Input Negative
+        int countNegative=0;
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                Console.Write($"Введите негативный элемент ({i},{j}) матрицы: ");
+                negativeCharArr[i,j]=Convert.ToChar(Console.ReadLine());
+                if(charArr[i,j]==negativeCharArr[i,j]) countNegative++;
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        for(int i=0;i<size[0];i++){
+            for(int j=0;j<size[1];j++){
+                Console.Write(negativeCharArr[i,j]);
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        Console.WriteLine(countNegative);
+        
+    }
+}
+
+// Допник
+int[,] RainingMatrix(int n, int m){
+    int[,] arr = new int[n,m];
+    int i = 0;
+    int j = 0;
+    for(int k=0; k<n*m;k++){
+        if(j<0 || i >= n){
+            j = i+1+j;
+            i = 0;
+        }
+        if(j >= m){
+            i = j-m+1;
+            j = m-1;
+        }
+        Console.WriteLine($"a[{i} {j}] = {k}; {n} {m}");
+        arr[i,j] = k;
+        i++; j--;
+    }
+    return arr; 
+}
+
+
 while (taskNomber != 0){
     switch(taskNomber){
+        case -10:
+            Console.WriteLine("Дождик : ");
+            Console.Write("Введите кол-во строк (n) = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во стольбцов (m) = ");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix_rain = RainingMatrix(n, m);
+            WriteMatrixInt(matrix_rain);
+            break;
+        case -9:
+            Negative();
+            break; 
+        case -8:
+            Console.WriteLine("Транспонирование : ");
+            Console.Write("Введите кол-во строк (n) = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во стольбцов (m) = ");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix_norm = InitMatrixRandomeInt(n, m);
+            WriteMatrixInt(matrix_norm);
+            int[,] matrix_trans = IntMTransport(matrix_norm);
+            WriteMatrixInt(matrix_trans);
+            break;
         case -7:
             string[] laebels = {"x1","y1","x2","y2","x3","y3"};
             double[] points = InitUserArrayDoubleWithLabel(6,laebels);
@@ -365,7 +571,7 @@ while (taskNomber != 0){
         case -1:
             Console.Clear();
             Console.Write("Введите кол-во элементов массива: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            n = Convert.ToInt32(Console.ReadLine());
             int maxArray = 0;
             int minArray = 1001;
             int[] array = new int[n];
@@ -582,6 +788,33 @@ while (taskNomber != 0){
             Console.Write("Введите b2= ");
             double b2 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine($"({string.Join("; ",getIntersection(k1,b1,k2,b2))})");
+            break;
+        case 47:
+            Console.Write("Введите кол-во строк (n) = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во стольбцов (m) = ");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] IntMatrix = InitMatrixRandomeInt(n, m);
+            WriteMatrixInt(IntMatrix);
+            break; 
+        case 50:
+            Console.Write("Введите кол-во строк (n) = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во стольбцов (m) = ");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix = InitMatrixRandomeInt(n, m);
+            Console.Write("Введите координаты  (i, j) через пробел = ");
+            int[] cordinate  = Console.ReadLine().Split().Select(x => int.Parse(x)).ToArray();
+            GetElementIntMatrix(matrix,cordinate[0], cordinate[1]);
+            break; 
+        case 52:
+            Console.Write("Введите кол-во строк (n) = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во стольбцов (m) = ");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix_ = InitMatrixRandomeInt(n, m);
+            WriteMatrixInt(matrix_);
+            SumColsFromMatrix(matrix_);
             break; 
         default: 
             Console.WriteLine("Ответ: 42");
