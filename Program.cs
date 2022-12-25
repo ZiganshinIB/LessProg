@@ -393,7 +393,12 @@ int Sum_Range(int start, int end){
     return end + Sum_Range(start, end-1);    
 }
 
-
+//task 68 
+int FunctionAkkerman(int m, int n){
+    if(m==0) return n+1;
+    if(n==0) return FunctionAkkerman(m-1,1);
+    return(FunctionAkkerman(m-1, FunctionAkkerman(m, n-1)));
+}
 
 // "Транспонирование"
 int[,] IntMTransport(int[,] matrix){
@@ -852,6 +857,13 @@ while (taskNomber != 0){
             Console.Write("Введите N ");
             int end_66 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(Sum_Range(start_66, end_66));
+            break;
+        case 68:
+            Console.Write("Введите M ");
+            int m_68 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите N ");
+            int n_68 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(FunctionAkkerman(m_68, n_68));
             break;
         default: 
             Console.WriteLine("Ответ: 42");
