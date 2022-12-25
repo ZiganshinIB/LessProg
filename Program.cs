@@ -413,6 +413,24 @@ int minSumRowMatrix(int[,] matix){
     }
     return index_min_sum_row;
 }
+// task 58
+int[,] MultMatrixs(int[,] matrix1, int[,] matrix2){
+    int[,] Multimatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
+    if(matrix1.GetLength(1) == matrix2.GetLength(0)){
+        for(int i = 0; i < matrix1.GetLength(0); i++){
+            for(int j = 0; j<matrix2.GetLength(1); j++){
+                int sum = 0;
+                for(int k=0; k < matrix1.GetLength(1); k++){
+                    sum += matrix1[i,k] * matrix2[k,j];
+                }
+                Multimatrix[i,j] = sum;
+            }
+        }
+    }else{
+        Console.WriteLine("Матрица не по размеру");
+    }
+    return Multimatrix;
+}
 
 // task 64
 string ReversePrintNumbers(int start , int end)
@@ -900,6 +918,21 @@ while (taskNomber != 0){
             WriteMatrixInt(intMatrix2D);
             Console.Write("Ответ: ");
             Console.WriteLine(minSumRowMatrix(intMatrix2D));
+            break;
+        case 58:
+            Console.WriteLine("Task 58 Задайте две матрицы.\nНапишите программу, которая будет находить произведение двух матриц.");
+            Console.Write("Введите размер 1 матрицы: ");
+            int[] size_58 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            int[,] intMatrix2D_1 = InitMatrixRandomeInt(size_58[0], size_58[1]);
+            Console.WriteLine(" матрица 1: ");
+            WriteMatrixInt(intMatrix2D_1);
+            Console.Write("Введите размер 2 матрицы: ");
+            size_58 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            int[,] intMatrix2D_2 = InitMatrixRandomeInt(size_58[0], size_58[1]);
+            Console.WriteLine(" матрица 2: ");
+            WriteMatrixInt(intMatrix2D_2);
+            Console.WriteLine("Результат: ");
+            WriteMatrixInt(MultMatrixs(intMatrix2D_1, intMatrix2D_2));
             break;
         case 64:
             Console.Write("Введите M ");
