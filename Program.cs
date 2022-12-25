@@ -375,6 +375,19 @@ void SumColsFromMatrix(int[,] matrix){
         Console.Write($"{sum} \t");
     }
 }
+// task 64
+string ReversePrintNumbers(int start , int end)
+{
+    if (start == end)
+    {
+        Console.Write(start);
+        return start.ToString();
+    }
+    string s = ReversePrintNumbers(start+1, end);
+    Console.Write($", {start}");
+    return $"{s}, {end}";
+}
+
 // "Транспонирование"
 int[,] IntMTransport(int[,] matrix){
     int[,] intMatrix=new int[matrix.GetLength(0),matrix.GetLength(1)];
@@ -816,6 +829,16 @@ while (taskNomber != 0){
             WriteMatrixInt(matrix_);
             SumColsFromMatrix(matrix_);
             break; 
+
+        
+        case 64:
+            Console.Write("Введите M ");
+            int start_64 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите N ");
+            int end_64 = Convert.ToInt32(Console.ReadLine());
+            ReversePrintNumbers(start_64, end_64);
+            Console.WriteLine();
+            break;
         default: 
             Console.WriteLine("Ответ: 42");
             break; 
