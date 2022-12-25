@@ -446,6 +446,69 @@ void MatrixTask60(int height, int length, int width){
     }else Console.WriteLine("Не могу построить!");  
 }
 
+// Task 62
+bool IsBorderLeft(int[] border, int[] current){
+    return border[0]+1>= current[1]; 
+}
+bool IsBorderRight(int[] border, int[] current){
+    return border[1]-1<= current[1]; 
+}
+bool IsBorderUp(int[] border, int[] current){
+    return border[2]+1>= current[0]; 
+}
+bool IsBorderBottom(int[] border, int[] current){
+    return border[3]-1<= current[0]; 
+}
+void moveRight(int[,] matrix, int[] current, int count){
+    current[1] += 1;
+    matrix[current[0], current[1]] = count;
+}
+void moveBottom(int[,] matrix, int[] current, int count){
+    current[0] += 1;
+    matrix[current[0], current[1]] = count;
+}
+void moveLeft(int[,] matrix, int[] current, int count){
+    current[1] -= 1;
+    matrix[current[0], current[1]] = count;
+}
+void moveUp(int[,] matrix, int[] current, int count){
+    current[0] -= 1;
+    matrix[current[0], current[1]] = count;
+}
+int[,] GetSpiralMatrix(int row, int col){
+    int[] border = {-1, col, -1, row}; // Левая Правая Верх Низ - Стены
+    bool flag = true;
+    int[] current = {0,0};
+    int[,] matrix = new int[row,col];
+    int count = 0;
+    matrix[0,0] = count;
+    while(flag){
+        while(!IsBorderRight(border,current)){
+            Console.WriteLine($"({current[0]} , {current[1]}) ");
+            count++;
+            moveRight(matrix,current,count);
+        }
+        border[2] += 1;
+        while(!IsBorderBottom(border,current)){
+            count++;
+            moveBottom(matrix,current,count);
+        }
+        border[1] -= 1;
+        while(!IsBorderLeft(border,current)){
+            count++;
+            moveLeft(matrix,current,count);
+        }
+        border[3] -= 1;
+        while(!IsBorderUp(border,current)){
+            count++;
+            moveUp(matrix,current,count);
+        }
+        border[0] += 1;
+        flag = !(IsBorderRight(border,current) && IsBorderBottom(border,current) && IsBorderLeft(border,current) && IsBorderUp(border,current));
+    }
+    return matrix;
+}
+
 // task 64
 string ReversePrintNumbers(int start , int end)
 {
@@ -958,6 +1021,12 @@ while (taskNomber != 0){
             int width = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Результат");
             MatrixTask60(height,length,width);
+            break;
+        case 62:
+            Console.WriteLine("Напишите программу, которая заполнит спирально массив.");
+            Console.Write("Введите размер матрицы: ");
+            int[] size_62 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            WriteMatrixInt(GetSpiralMatrix(size_62[0], size_62[1]));
             break;
         case 64:
             Console.Write("Введите M ");
