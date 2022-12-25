@@ -6,6 +6,7 @@ taskNomber = Convert.ToInt32(Console.ReadLine());
 //Частые переменные
 int count, number, n, m;
 int[] IntArray;
+int[,] intMatrix2D;
 
 //task 25
 int Pow(int number, int a){
@@ -375,6 +376,24 @@ void SumColsFromMatrix(int[,] matrix){
         Console.Write($"{sum} \t");
     }
 }
+// task 54
+void SortRowMatrix(int[,] matrix){
+    for(int i = 0; i<matrix.GetLength(0); i++){
+        for(int j = 0; j < matrix.GetLength(1); j++){
+            int min = matrix[i,0];
+            int index_min = 0;
+            for(int k = 0; k<matrix.GetLength(1)-j; k++){
+                if(min > matrix[i,k]){
+                    min = matrix[i, k];
+                    index_min = k;
+                }
+            }
+            matrix[i, index_min] = matrix[i, matrix.GetLength(1)-1 -j];
+            matrix[i, matrix.GetLength(1)-1-j] = min;
+        }  
+    }
+}
+
 // task 64
 string ReversePrintNumbers(int start , int end)
 {
@@ -841,7 +860,17 @@ while (taskNomber != 0){
             WriteMatrixInt(matrix_);
             SumColsFromMatrix(matrix_);
             break; 
-
+        case 58:
+            Console.WriteLine("Task 58");
+            Console.Write("Введите размер матрицы: ");
+            int[] size_58 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            intMatrix2D = InitMatrixRandomeInt(size_58[0], size_58[1]);
+            Console.WriteLine("Входная матрица: ");
+            WriteMatrixInt(intMatrix2D);
+            SortRowMatrix(intMatrix2D);
+            Console.WriteLine("Итоговая матрица");
+            WriteMatrixInt(intMatrix2D);
+            break;
         
         case 64:
             Console.Write("Введите M ");
