@@ -509,6 +509,39 @@ int[,] GetSpiralMatrix(int row, int col){
     return matrix;
 }
 
+// task 61 Pascal
+int[] NextStepPascal(int[] step){
+    int[] nextStep = new int[step.Length+1];
+    nextStep[0] =1;
+    if(step.Length==0) return nextStep;
+    nextStep[step.Length] = 1;
+    for(int i=1; i<step.Length;i++){
+        nextStep[i] = step[i-1]+step[i];
+    }
+    return nextStep;
+}
+void PrintStepPascal(int[] arr){
+    Console.Write(arr[0]);
+    for(int i =1; i<arr.Length; i++){
+        Console.Write($" {arr[i]}");
+    }
+}
+void PrintPascal(int rank){
+    int[] step = new int[0]; 
+    for(int i =0; i<rank; i++){
+        for(int k =0; k<rank-i-1; k++){
+            Console.Write(" ");
+        }
+        int[] newStep = NextStepPascal(step);
+        step = newStep;
+
+        PrintStepPascal(step);
+        for(int k =0; k<rank-i-1; k++){
+            Console.Write(" ");
+        }
+        Console.WriteLine();
+    }
+}
 // task 64
 string ReversePrintNumbers(int start , int end)
 {
@@ -1021,6 +1054,12 @@ while (taskNomber != 0){
             int width = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Результат");
             MatrixTask60(height,length,width);
+            break;
+        case 61:
+            Console.WriteLine("Task 61 .Вывести первые N строк треугольника Паскаля.\n Сделать вывод в виде равнобедренного треугольника.");
+            Console.Write("Введите N: ");
+            count = Convert.ToInt32(Console.ReadLine());
+            PrintPascal(count);
             break;
         case 62:
             Console.WriteLine("Напишите программу, которая заполнит спирально массив.");
