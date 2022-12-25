@@ -431,6 +431,20 @@ int[,] MultMatrixs(int[,] matrix1, int[,] matrix2){
     }
     return Multimatrix;
 }
+// task 60
+void MatrixTask60(int height, int length, int width){
+    if((height*length*width)< 90 && height>0 && length>0 && width>0){
+        int number = 10;
+        for(int i = 0; i<height; i++){
+            for(int j = 0; j<length; j++){
+                for(int k =0; k<width; k++){
+                    Console.WriteLine($"{number} ({i},{j},{k})");
+                    number++;
+                }
+            }
+        }
+    }else Console.WriteLine("Не могу построить!");  
+}
 
 // task 64
 string ReversePrintNumbers(int start , int end)
@@ -933,6 +947,17 @@ while (taskNomber != 0){
             WriteMatrixInt(intMatrix2D_2);
             Console.WriteLine("Результат: ");
             WriteMatrixInt(MultMatrixs(intMatrix2D_1, intMatrix2D_2));
+            break;
+        case 60:
+            Console.WriteLine("Task 60 .Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.\n Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.");
+            Console.Write("Введите количество строк: ");
+            int height = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите количество стольбцов: ");
+            int length = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите количество Масивов: ");
+            int width = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Результат");
+            MatrixTask60(height,length,width);
             break;
         case 64:
             Console.Write("Введите M ");
