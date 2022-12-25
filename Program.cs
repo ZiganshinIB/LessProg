@@ -393,6 +393,26 @@ void SortRowMatrix(int[,] matrix){
         }  
     }
 }
+//task 56
+int minSumRowMatrix(int[,] matix){
+    int minSum = 0;
+    int index_min_sum_row=0;
+    for(int j =0; j< matix.GetLength(1); j++){
+        minSum += matix[0,j];
+    }
+    if(matix.GetLength(1) > 1)
+    for(int i =1;i < matix.GetLength(0);i++){
+        int sumRow = 0;
+        for(int j =0; j< matix.GetLength(1); j++){
+            sumRow += matix[i,j];
+        }
+        if(minSum> sumRow){ 
+            minSum=sumRow;
+            index_min_sum_row = i;    
+        }
+    }
+    return index_min_sum_row;
+}
 
 // task 64
 string ReversePrintNumbers(int start , int end)
@@ -860,18 +880,27 @@ while (taskNomber != 0){
             WriteMatrixInt(matrix_);
             SumColsFromMatrix(matrix_);
             break; 
-        case 58:
-            Console.WriteLine("Task 58");
+        case 54:
+            Console.WriteLine("Task 54");
             Console.Write("Введите размер матрицы: ");
-            int[] size_58 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-            intMatrix2D = InitMatrixRandomeInt(size_58[0], size_58[1]);
+            int[] size_54 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            intMatrix2D = InitMatrixRandomeInt(size_54[0], size_54[1]);
             Console.WriteLine("Входная матрица: ");
             WriteMatrixInt(intMatrix2D);
             SortRowMatrix(intMatrix2D);
             Console.WriteLine("Итоговая матрица");
             WriteMatrixInt(intMatrix2D);
             break;
-        
+        case 56:
+            Console.WriteLine("Task 56 Задайте прямоугольный двумерный массив.\n Напишите программу, которая будет находить строку с наименьшей суммой элементов.");
+            Console.Write("Введите размер матрицы: ");
+            int[] size_56 = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+            intMatrix2D = InitMatrixRandomeInt(size_56[0], size_56[1]);
+            Console.WriteLine("Входная матрица: ");
+            WriteMatrixInt(intMatrix2D);
+            Console.Write("Ответ: ");
+            Console.WriteLine(minSumRowMatrix(intMatrix2D));
+            break;
         case 64:
             Console.Write("Введите M ");
             int start_64 = Convert.ToInt32(Console.ReadLine());
