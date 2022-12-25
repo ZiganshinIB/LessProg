@@ -387,6 +387,13 @@ string ReversePrintNumbers(int start , int end)
     Console.Write($", {start}");
     return $"{s}, {end}";
 }
+//task 66
+int Sum_Range(int start, int end){
+    if (end== start) return start;
+    return end + Sum_Range(start, end-1);    
+}
+
+
 
 // "Транспонирование"
 int[,] IntMTransport(int[,] matrix){
@@ -838,6 +845,13 @@ while (taskNomber != 0){
             int end_64 = Convert.ToInt32(Console.ReadLine());
             ReversePrintNumbers(start_64, end_64);
             Console.WriteLine();
+            break;
+        case 66:
+            Console.Write("Введите M ");
+            int start_66 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите N ");
+            int end_66 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(Sum_Range(start_66, end_66));
             break;
         default: 
             Console.WriteLine("Ответ: 42");
